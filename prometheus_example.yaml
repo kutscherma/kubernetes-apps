@@ -1,3 +1,10 @@
+# After applying the configmap the logs are visible at:
+
+# InsightsMetrics |
+# where Namespace contains "prometheus"
+
+
+
 apiVersion: v1
 kind: Service
 metadata:
@@ -30,6 +37,8 @@ spec:
       annotations:
         prometheus.io/scrape: "true"
         prometheus.io/port: "8080"
+        prometheus.io/path: "/metrics"
+        prometheus.io/scheme: "http"
       labels:
         app.kubernetes.io/name: prometheus-example-app
         app: prom-app
